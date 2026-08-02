@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-5">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white text-center py-3">
+
+                    <h2 class="mb-0 fw-bold">
+                        Welcome Back
+                    </h2>
+
+                    <small>Login to your JobHub account</small>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show">
+
+                                {{ message }}
+
+                                <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert">
+                                </button>
+
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Username
+                            </label>
+
+                            {{ form.username }}
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label fw-semibold">
+                                Password
+                            </label>
+
+                            {{ form.password }}
+
+                        </div>
+
+                        <button class="btn btn-primary w-100 py-2 fw-semibold">
+
+                            Login
+
+                        </button>
+
+                    </form>
+
+                    <div class="text-end mt-3">
+
+                        <a href="#" class="text-decoration-none">
+
+                            Forgot Password?
+
+                        </a>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="text-center">
+
+                        Don't have an account?
+
+                        <a href="{% url 'register' %}" class="fw-semibold">
+
+                            Register
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

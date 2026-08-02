@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+
+                    <h2 class="mb-0">Create Account</h2>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Username
+                            </label>
+
+                            {{ form.username }}
+
+                            {% if form.username.errors %}
+                                <small class="text-danger">
+                                    {{ form.username.errors }}
+                                </small>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Email
+                            </label>
+
+                            {{ form.email }}
+
+                            {% if form.email.errors %}
+                                <small class="text-danger">
+                                    {{ form.email.errors }}
+                                </small>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Password
+                            </label>
+
+                            {{ form.password1 }}
+
+                            {% if form.password1.errors %}
+                                <small class="text-danger">
+                                    {{ form.password1.errors }}
+                                </small>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Confirm Password
+                            </label>
+
+                            {{ form.password2 }}
+
+                            {% if form.password2.errors %}
+                                <small class="text-danger">
+                                    {{ form.password2.errors }}
+                                </small>
+                            {% endif %}
+                        </div>
+
+                        <button class="btn btn-primary w-100 py-2">
+                            Create Account
+                        </button>
+
+                    </form>
+
+                    <hr>
+
+                    <div class="text-center">
+
+                        Already have an account?
+
+                        <a href="{% url 'login' %}">
+                            Login
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

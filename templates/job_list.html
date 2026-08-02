@@ -1,0 +1,299 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">Available Jobs</h2>
+            <p class="text-muted">
+                Total Jobs : {{ jobs.paginator.count }}
+            </p>
+        </div>
+
+        {% if user.is_superuser %}
+        <a href="/upload/" class="btn btn-primary">
+            Upload Jobs
+        </a>
+        {% endif %}
+
+    </div>
+
+    <!-- Search -->
+
+    <form method="GET" action="{% url 'job_list' %}" class="mb-5">
+
+        <div class="row g-2">
+
+            <div class="col-md-4">
+                <input
+                    type="text"
+                    name="q"
+                    class="form-control"
+                    placeholder="Search by Job Title, Company or Location..."
+                    value="{{ query|default:'' }}">
+            </div>
+
+            <div class="col-md-2">
+
+                <select name="job_type" class="form-select">
+
+                    <option value="">All Job Types</option>
+
+                    {% for type in job_types %}
+
+                    <option value="{{ type }}"
+                        {% if selected_job_type == type %}selected{% endif %}>
+                        {{ type }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <select name="location" class="form-select">
+
+                    <option value="">All Locations</option>
+
+                    {% for loc in locations %}
+
+                    <option value="{{ loc }}"
+                        {% if selected_location == loc %}selected{% endif %}>
+                        {{ loc }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <select name="sort" class="form-select">
+
+                    <option value="">Sort By</option>
+
+                    <option value="latest"
+                        {% if selected_sort == "latest" %}selected{% endif %}>
+                        Latest
+                    </option>
+
+                    <option value="oldest"
+                        {% if selected_sort == "oldest" %}selected{% endif %}>
+                        Oldest
+                    </option>
+
+                    <option value="company"
+                        {% if selected_sort == "company" %}selected{% endif %}>
+                        Company
+                    </option>
+
+                    <option value="title"
+                        {% if selected_sort == "title" %}selected{% endif %}>
+                        Job Title
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-1 d-grid">
+
+                <button type="submit" class="btn btn-primary">
+                    Search
+                </button>
+
+            </div>
+
+            <div class="col-md-1 d-grid">
+
+                <a href="{% url 'job_list' %}" class="btn btn-secondary">
+                    Reset
+                </a>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <!-- Job Cards -->
+
+    <div class="row g-4">
+
+        {% for job in jobs %}
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card h-100 shadow">
+
+                <div class="card-body">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <img src="{% static 'images/' %}{{ job.company|lower }}.png"
+                             alt="{{ job.company }}"
+                             width="65"
+                             height="65"
+                             class="me-3 rounded">
+
+                        <div>
+
+                            <h4 class="mb-1">{{ job.title }}</h4>
+
+                            <h5 class="text-primary mb-0">
+                                {{ job.company }}
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <p>
+                        <strong>Location:</strong>
+                        {{ job.location }}
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong>
+                        {{ job.salary }}
+                    </p>
+
+                    <p>
+                        <strong>Experience:</strong>
+                        {{ job.experience }}
+                    </p>
+
+                    <span class="badge bg-primary">
+                        {{ job.job_type }}
+                    </span>
+
+                    <p class="mt-3">
+                        {{ job.description|truncatechars:100 }}
+                    </p>
+
+                    <small class="text-muted">
+                        Posted on {{ job.posted_date }}
+                    </small>
+
+                    <hr>
+
+                    <!-- Buttons -->
+
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="{% url 'job_detail' job.id %}"
+                           class="btn btn-primary btn-sm">
+
+                            View Details
+
+                        </a>
+
+                        {% if user.is_superuser %}
+
+                        <a href="{% url 'edit_job' job.id %}"
+                           class="btn btn-warning btn-sm">
+
+                             Edit
+
+                        </a>
+                        <a href="{% url 'delete_job' job.id %}"
+                            class="btn btn-danger btn-sm">
+
+                             Delete
+
+                        </a>
+                        {% endif %}
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+
+            <div class="alert alert-warning">
+
+                No jobs available.
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- Pagination -->
+
+    {% if jobs.has_other_pages %}
+
+    <nav class="mt-5">
+
+        <ul class="pagination justify-content-center">
+
+            {% if jobs.has_previous %}
+
+            <li class="page-item">
+
+                <a class="page-link"
+                   href="?page={{ jobs.previous_page_number }}">
+                    Previous
+                </a>
+
+            </li>
+
+            {% endif %}
+
+            {% for num in jobs.paginator.page_range %}
+
+            <li class="page-item {% if jobs.number == num %}active{% endif %}">
+
+                <a class="page-link"
+                   href="?page={{ num }}">
+                    {{ num }}
+                </a>
+
+            </li>
+
+            {% endfor %}
+
+            {% if jobs.has_next %}
+
+            <li class="page-item">
+
+                <a class="page-link"
+                   href="?page={{ jobs.next_page_number }}">
+                    Next
+                </a>
+
+            </li>
+
+            {% endif %}
+
+        </ul>
+
+    </nav>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

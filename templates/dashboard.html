@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-4 fw-bold">
+        Admin Dashboard
+    </h1>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h3>Manage Jobs</h3>
+
+                    <p class="text-muted">
+                        View and manage all jobs.
+                    </p>
+
+                    <a href="/jobs/" class="btn btn-primary w-100">
+                        Open Jobs
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h3>Upload CSV</h3>
+
+                    <p class="text-muted">
+                        Import jobs using CSV.
+                    </p>
+
+                    <a href="/upload/" class="btn btn-primary w-100">
+                        Upload CSV
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h3>Paste Excel</h3>
+
+                    <p class="text-muted">
+                        Paste Excel job data.
+                    </p>
+
+                    <a href="/paste/" class="btn btn-primary w-100">
+                        Paste Excel
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<div class="container mt-5">
+
+    <div class="text-center py-5">
+
+        <h1 class="display-4 fw-bold">
+
+            Find Your Dream Job
+
+        </h1>
+
+        <p class="lead text-muted mt-3">
+
+            Explore opportunities from top companies and build your career.
+
+        </p>
+
+        <a href="/jobs/" class="btn btn-primary btn-lg mt-3">
+
+            Browse Jobs
+
+        </a>
+
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h3>Browse Jobs</h3>
+
+                    <p class="text-muted">
+
+                        Search jobs by company, title and location.
+
+                    </p>
+
+                    <a href="/jobs/" class="btn btn-primary">
+
+                        Explore Jobs
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h3>My Applications</h3>
+
+                    <p class="text-muted">
+
+                        View all the jobs you have applied for.
+
+                    </p>
+
+                    <a href="{% url 'my_applications' %}" class="btn btn-primary">
+
+                        View Applications
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

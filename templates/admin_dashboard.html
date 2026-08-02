@@ -1,0 +1,396 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- Header -->
+
+    <div class="mb-5">
+
+        <h1 class="fw-bold">
+            📊 Admin Dashboard
+        </h1>
+
+        <p class="text-muted">
+            Monitor platform activity, manage jobs, and track candidate applications.
+        </p>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow h-100 bg-primary text-white">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:40px;">💼</div>
+
+                    <h6 class="mt-3">
+                        Total Jobs
+                    </h6>
+
+                    <h1 class="fw-bold">
+                        {{ total_jobs }}
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow h-100 bg-success text-white">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:40px;">📝</div>
+
+                    <h6 class="mt-3">
+                        Applications
+                    </h6>
+
+                    <h1 class="fw-bold">
+                        {{ total_applications }}
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow h-100 bg-warning text-dark">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:40px;">👥</div>
+
+                    <h6 class="mt-3">
+                        Registered Users
+                    </h6>
+
+                    <h1 class="fw-bold">
+                        {{ total_users }}
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card border-0 shadow h-100 bg-info text-white">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:40px;">🏢</div>
+
+                    <h6 class="mt-3">
+                        Companies
+                    </h6>
+
+                    <h1 class="fw-bold">
+                        {{ total_companies }}
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card border-0 shadow h-100 bg-danger text-white">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:40px;">📈</div>
+
+                    <h6 class="mt-3">
+                        Active Jobs
+                    </h6>
+
+                    <h1 class="fw-bold">
+                        {{ active_jobs }}
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <hr class="my-5">
+
+    <h3 class="fw-bold mb-4">
+        ⚡ Quick Actions
+    </h3>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:50px;">💼</div>
+
+                    <h4 class="mt-3">
+                        Manage Jobs
+                    </h4>
+
+                    <p class="text-muted">
+
+                        View, edit and delete job postings.
+
+                    </p>
+
+                    <a href="{% url 'job_list' %}"
+                       class="btn btn-primary rounded-pill px-4">
+
+                        Open Jobs
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:50px;">📄</div>
+
+                    <h4 class="mt-3">
+                        Upload CSV
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Import multiple jobs using a CSV file.
+
+                    </p>
+
+                    <a href="{% url 'upload_csv' %}"
+                       class="btn btn-success rounded-pill px-4">
+
+                        Upload
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:50px;">📋</div>
+
+                    <h4 class="mt-3">
+                        Paste Excel
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Import job data copied directly from Excel.
+
+                    </p>
+
+                    <a href="{% url 'paste_excel' %}"
+                       class="btn btn-warning rounded-pill px-4">
+
+                        Paste Data
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Platform Overview -->
+
+    <hr class="my-5">
+
+    <h3 class="fw-bold mb-4">
+        🚀 Platform Overview
+    </h3>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:50px;">📈</div>
+
+                    <h4 class="mt-3">
+                        Job Management
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Add, update and manage all job postings efficiently.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:50px;">👥</div>
+
+                    <h4 class="mt-3">
+                        Candidate Management
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Monitor registered candidates and their applications.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <div style="font-size:50px;">🚀</div>
+
+                    <h4 class="mt-3">
+                        Recruitment
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Manage the recruitment process from one dashboard.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Applications -->
+
+    <hr class="my-5">
+
+    <h3 class="fw-bold mb-4">
+        📝 Recent Applications
+    </h3>
+
+    <div class="card shadow border-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Applicant</th>
+
+                        <th>Job</th>
+
+                        <th>Email</th>
+
+                        <th>Applied Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for application in recent_applications %}
+
+                    <tr>
+
+                        <td>{{ application.applicant_name }}</td>
+
+                        <td>{{ application.job.title }}</td>
+
+                        <td>{{ application.email }}</td>
+
+                        <td>{{ application.applied_date }}</td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="4" class="text-center py-4">
+
+                            No applications available.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

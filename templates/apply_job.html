@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white py-3">
+
+                    <h2 class="mb-0">
+                        Apply for {{ job.title }}
+                    </h2>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Applicant Name
+                            </label>
+                            {{ form.applicant_name }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Email Address
+                            </label>
+                            {{ form.email }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Phone Number
+                            </label>
+                            {{ form.phone }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Upload Resume
+                            </label>
+                            {{ form.resume }}
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">
+                                Cover Letter
+                            </label>
+                            {{ form.cover_letter }}
+                        </div>
+
+                        <div class="d-flex gap-3">
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Submit Application
+                            </button>
+
+                            <a href="{% url 'job_detail' job.id %}"
+                               class="btn btn-secondary px-4">
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

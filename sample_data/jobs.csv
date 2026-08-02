@@ -1,0 +1,31 @@
+title,company,location,salary,experience,job_type,description,posted_date
+Software Engineer,Google,Bangalore,12 LPA,2 Years,Full Time,Develop scalable web applications using Python and Django.,2026-07-31
+Python Developer,TCS,Kochi,6 LPA,1 Year,Full Time,Develop REST APIs using Django and MySQL.,2026-07-31
+UI Designer,Infosys,Hyderabad,5 LPA,Freshers,Internship,Design modern UI and UX using Figma.,2026-07-30
+Frontend Developer,Wipro,Chennai,7 LPA,2 Years,Remote,Build responsive websites using HTML CSS Bootstrap and JavaScript.,2026-07-28
+Backend Developer,IBM,Bangalore,10 LPA,3 Years,Full Time,Develop backend services using Django REST Framework.,2026-07-27
+Java Developer,Accenture,Pune,8 LPA,2 Years,Full Time,Develop enterprise Java applications using Spring Boot.,2026-07-26
+Data Analyst,Cognizant,Kochi,5.5 LPA,1 Year,Full Time,Analyze business data using SQL Excel and Power BI.,2026-07-25
+Machine Learning Engineer,Amazon,Hyderabad,18 LPA,3 Years,Full Time,Build machine learning models using Python and Scikit-learn.,2026-07-24
+Cloud Engineer,Microsoft,Bangalore,16 LPA,2 Years,Full Time,Manage Azure cloud infrastructure and deployments.,2026-07-23
+DevOps Engineer,Oracle,Noida,14 LPA,3 Years,Full Time,Implement CI/CD pipelines using Docker and Jenkins.,2026-07-22
+Android Developer,Zoho,Chennai,7 LPA,1 Year,Full Time,Develop Android applications using Java and Kotlin.,2026-07-21
+iOS Developer,Apple,Bangalore,20 LPA,4 Years,Full Time,Develop iOS applications using Swift and Xcode.,2026-07-20
+QA Engineer,Capgemini,Trivandrum,5 LPA,Freshers,Full Time,Perform software testing and automation testing.,2026-07-19
+Cyber Security Analyst,Deloitte,Hyderabad,11 LPA,2 Years,Full Time,Monitor security threats and perform vulnerability assessments.,2026-07-18
+Database Administrator,HCL,Chennai,9 LPA,3 Years,Full Time,Manage MySQL and PostgreSQL databases.,2026-07-17
+Business Analyst,Tech Mahindra,Pune,8 LPA,2 Years,Full Time,Gather business requirements and prepare documentation.,2026-07-16
+Full Stack Developer,Flipkart,Bangalore,15 LPA,3 Years,Full Time,Develop frontend and backend web applications.,2026-07-15
+Software Tester,UST,Trivandrum,4.5 LPA,Freshers,Full Time,Perform manual and automation testing of applications.,2026-07-14
+Network Engineer,Cisco,Bangalore,10 LPA,2 Years,Full Time,Configure and maintain enterprise network infrastructure.,2026-07-13
+AI Engineer,OpenAI,Remote,25 LPA,4 Years,Remote,Develop AI-powered applications using Python and LLMs.,2026-07-12
+Technical Support Engineer,HP,Bangalore,4 LPA,Freshers,Full Time,Provide technical support to enterprise customers.,2026-07-11
+React Developer,Paytm,Noida,9 LPA,2 Years,Remote,Develop single-page applications using React.js.,2026-07-10
+Node.js Developer,Swiggy,Bangalore,11 LPA,2 Years,Full Time,Develop scalable backend APIs using Node.js and Express.,2026-07-09
+PHP Developer,Infosys,Mysore,6 LPA,1 Year,Full Time,Develop web applications using PHP and Laravel.,2026-07-08
+HR Executive,Infosys,Kochi,4 LPA,Freshers,Full Time,Handle recruitment onboarding and employee records.,2026-07-07
+Digital Marketing Executive,Byju's,Bangalore,5 LPA,1 Year,Full Time,Manage SEO social media and digital campaigns.,2026-07-06
+Content Writer,Freshworks,Chennai,4.5 LPA,Freshers,Remote,Write technical blogs and product documentation.,2026-07-05
+Graphic Designer,Canva,Remote,6 LPA,2 Years,Remote,Design graphics and marketing materials.,2026-07-04
+Data Scientist,Adobe,Hyderabad,19 LPA,4 Years,Full Time,Analyze large datasets and build predictive models.,2026-07-03
+Project Manager,Siemens,Pune,18 LPA,5 Years,Full Time,Manage software development projects and client communication.,2026-07-02
